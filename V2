@@ -1,0 +1,45 @@
+from art import logo
+print(logo)
+
+def add(n1, n2):
+    return n1 + n2
+def subtract(n1, n2):
+    return n1 - n2
+def multiply(n1, n2):
+    return n1 * n2
+def divide(n1, n2):
+    return n1 / n2
+
+math_troop = {
+    "+": add,
+    "-": subtract,
+    "*": multiply,
+    "/": divide,
+}
+
+Done = False
+sub_total = 0
+print("Welcome to the calculator!")
+while not Done == True:
+    num_1 = int(input("What is your first number?"))
+    for key in math_troop:
+        print(key)
+    operator = input("What is your operator")
+    num_2 = int(input("What is your second number?"))
+
+    def math(first_num, second_num, operation):
+        operation = math_troop[operator](first_num, second_num)
+        return operation
+
+    print(math(num_1, num_2, operator))
+
+    more = input("Would you like to add another number")
+    if more == "yes":
+        sub_total += math(num_1, num_2, operator)
+        operator = input("What is your operator")
+        num_3 = int(input("What is your second number?"))
+
+        print(math(sub_total, num_3, operator))
+        Done = True
+    else:
+        Done = True
